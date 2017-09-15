@@ -1,0 +1,7 @@
+Spike 01 measures the time taken to for the server to communicate with the client and the server. 
+It utilizes socket.io and bonescript from JavaScript to calculate how long it takes for communication 
+between the server and the client to procure.  
+
+We used:  https://www.npmjs.com/package/bonescript (bonescript)
+and 
+https://www.npmjs.com/package/socket.io (socket.io)for reference. 

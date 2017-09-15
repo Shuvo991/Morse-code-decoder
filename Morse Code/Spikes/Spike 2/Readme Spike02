@@ -1,0 +1,5 @@
+The main purpose of Spike 02 is to measures the duration of a 1-way communication that occurs between the server side 
+and the client when using firebase and beaglebone-io libraries in javascript. 
+We used : https://www.npmjs.com/package/firebase-tools  (firebase)
+and  
+https://www.npmjs.com/package/beaglebone-io for reference. (beaglebone-io)

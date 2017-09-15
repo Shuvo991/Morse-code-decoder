@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Socket.io</title>  </head>
+
+        </body>
+            <script src="/socket.io/socket.io.js"></script>
+            <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+
+            <script>
+            var socket = io.connect();
+            socket.on('motion', function(message) {                     // when motion is recieved print out the motion
+                document.getElementById('code').innerHTML = message;
+
+                })
+
+
+            socket.on('letter',function(result){                        // when letter is recieved print out the letter
+                document.getElementById('letter').innerHTML = result;
+
+            })
+
+
+            socket.on('word',function(result){                          // when word is recieved print out the woed
+                document.getElementById('word').innerHTML = result;
+
+            })
+
+          function sendrun(){socket.emit('run','');};                   // function to tell server to start
+          function sendstop(){socket.emit('stop','');};                 // function to tell server to end
+
+          </script>
+
+
+
+
+
+        <h1>Morse code Interface</h1>
+        Motion at server: <h2 id='code'>---</h2>
+        <br>
+        Letter recieved: <h2 id='letter'>---</h2>
+        <br>
+        Word recieved: <h2 id='word'>---</h2>
+        <br>
+               <input type="button" onclick='sendrun()'  id='button' value="Start" />
+               <input type="button" onclick='sendstop()'  id='button1' value="Stop" />
+
+
+    </body>
+</html>
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+        <head><title>Motion tester</title></head>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+
+                var iosocket = io.connect();    // initiate communication with server
+
+                // when client recieves latency message
+                iosocket.on('latency',function(data){
+                  var currentD =  new Date().getTime(); //get time
+                  var ping = currentD - data.latency    // cal time difference
+                  var state = data.state;       // get pir state from msg
+                  console.log("Stime: "+data.latency+" Ctime: "+currentD);
+                  iosocket.emit('response',{ping:ping});  // send back the time difference
+                  document.getElementById('pingtxt').innerHTML = ping // show the ping on page
+                  // show the pin state on page
+                  if (state == 0){
+                  document.getElementById("statepir").innerHTML ='No Motion';}
+                  else{
+                  document.getElementById("statepir").innerHTML = "MOTION!!";}
+                  });
+
+        </script>
+        <body>
+               PIR State:  <h2 id="statepir">Please wait...</h2>  
+               Ping in Seconds: <h2 id='pingtxt'> -</h2>
+        </body>
+</html>
+
